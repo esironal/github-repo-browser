@@ -1,0 +1,83 @@
+<h2>{{repo.name}}</h2>
+
+<div>
+  Issues: {{repostar.open_issues_count}}
+</div>
+
+<!--
+<div id="categorytab">
+  <ul ng-init="tab=1" class="tab-links">
+    <li ng-class="{active:tab===1}"><a href ng-click="tab=1">Stargazers</a></li>
+    <li ng-class="{active:tab===2}"><a href ng-click="tab=2">Contributors</a></li>
+    <li ng-class="{active:tab===3}"><a href ng-click="tab=3">Subscribers</a></li>
+  </ul>
+</div>
+-->
+
+<div ng-cloak>
+<md-content>
+<md-tabs md-dynamic-height md-border-bottom>
+<md-tab label="stargazers">
+<md-content class="md-padding">
+    <div id="stargazerscontainer">
+
+<!--      <div ng-show="tab===1"> -->
+          <ul>
+        <!--    <li ng-repeat="user in repo.collaborators">-->
+
+              <li ng-repeat="user in repostar.stargazers">
+
+        <!--      <img src="http://www.gravatar.com/avatar/{{user.gravatar_id}}" alt="{{user.login}}"/>-->
+                <img width="100" src="{{user.avatar_url}}" alt="{{user.login}}"/>
+                <a href="{{user.html_url}}">{{user.login}}</a>
+            </li>
+          </ul>
+<!--      </div>-->
+    </div>
+    </md-content>
+    </md-tab>
+    <md-tab label="contributors">
+    <md-content class="md-padding">
+    <div id="contributorscontainer">
+ <!--     <div ng-show="tab===2"> -->
+          <ul>
+        <!--    <li ng-repeat="user in repo.collaborators">-->
+
+              <li ng-repeat="user in repocont.contributors">
+
+        <!--      <img src="http://www.gravatar.com/avatar/{{user.gravatar_id}}" alt="{{user.login}}"/>-->
+                <img width="100" src="{{user.avatar_url}}" alt="{{user.login}}"/>
+              <a href="{{user.html_url}}">{{user.login}}</a>
+            </li>
+          </ul>
+ <!--     </div> -->
+
+    </div>
+    </md-content>
+    </md-tab>
+    <md-tab label="subscribers">
+    <md-content class="md-padding">
+    <div id="subscriberscontainer">
+<!--      <div ng-show="tab===3"> -->
+          <ul>
+        <!--    <li ng-repeat="user in repo.collaborators">-->
+
+              <li ng-repeat="user in reposubs.subscribers">
+
+        <!--      <img src="http://www.gravatar.com/avatar/{{user.gravatar_id}}" alt="{{user.login}}"/>-->
+                <img width="100" src="{{user.avatar_url}}" alt="{{user.login}}"/>
+                <a href="{{user.html_url}}">{{user.login}}</a>
+            </li>
+          </ul>
+<!--      </div> -->
+
+    </div>
+    </md-content>
+    </md-tab>
+    </md-tabs>
+    </md-content>
+
+</div>
+
+<a href="#/main">Back to search</a>
+<a href="#/user/{{repo.owner.login}}">Back to {{repo.owner.login}}</a>
